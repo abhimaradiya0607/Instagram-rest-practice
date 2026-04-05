@@ -53,7 +53,8 @@ app.get('/posts/new',(req,res)=>{
 
 app.post('/posts',(req,res)=>{
     let likes=Math.floor(Math.random()*5);
-    let {username,imageUrl,caption}=req.body;
+    let {username,imageId,caption}=req.body;
+    let imageUrl = `https://picsum.photos/id/${imageId}/400/300`;
     let id=uuidv4();
     posts.unshift({likes,id,username,imageUrl,caption});
     res.redirect('/posts')
@@ -69,16 +70,18 @@ app.get('/posts/:id',(req,res)=>{
     }
 })
 
-app.patch('/posts/:id',(req,res)=>{
-    let {id}=req.params;
-    let post=posts.find((p)=>id===p.id);
-    let newUrl=req.body.imageUrl;
-    let newCaption=req.body.caption;
-    post.imageUrl=newUrl;
-    post.caption=newCaption;
-    console.log('patch request hit')
-    res.redirect('/posts')
-})
+app.patch('/posts/:id', (req, res) => {
+    let { id } = req.params;
+    let post = posts.find((p) => p.id === id);
+    if (!post) {
+        return res.send("Post not found ❌");
+    }
+    let { imageId, caption } = req.body;
+    post.imageUrl = `https://picsum.photos/id/${imageId}/400/300`;
+    post.caption = caption;
+    console.log("PATCH request successful ✅");
+    res.redirect('/posts');
+});
 
 app.get('/posts/:id/edit',(req,res)=>{
     let {id}=req.params;

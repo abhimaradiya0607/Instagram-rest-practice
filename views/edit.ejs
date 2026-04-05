@@ -13,11 +13,11 @@
     </h3>
     <form method="post" action="/posts/<%= post.id%>?_method=PATCH">
     <div class="mb-3">
-        <label for="basic-url" class="form-label">Give New Image URL:</label>
+        <label for="basic-url" class="form-label">Edit Image ID:</label>
         <div class="input-group">
-            <span class="input-group-text" id="basic-addon3">https://picsum.photos/id/YOUR_CHOICE_ID(EX:1..35..)/400/300</span>
-            <input required name="imageUrl" type="text" class="form-control" id="basic-url"
-                placeholder="Just change the id of the URL on left" aria-describedby="basic-addon3 basic-addon4">
+            <span class="input-group-text" id="basic-addon3">Change Id to another</span>
+            <input value="<%= post.imageUrl.split('/')[4] %>" required  name="imageId" type="text" class="form-control" id="basic-url"
+                aria-describedby="basic-addon3 basic-addon4">
         </input>
         </div>
         <div class="input-group">
