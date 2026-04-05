@@ -1,6 +1,10 @@
 # Instagram-rest-practice
 A RESTful CRUD app built with Node.js, Express, and EJS — Instagram-style post feed with create, read, update, delete, and like functionality.
 
+
+🔗 Live Demo: https://instagram-rest-practice-production.up.railway.app/posts
+
+
 # Instagram REST Practice
 
 A practice project to solidify RESTful API concepts using the MERN-adjacent stack.
